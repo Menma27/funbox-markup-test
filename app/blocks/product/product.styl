@@ -1,0 +1,56 @@
+.product
+	width 320px
+	height 480px
+	font-family 'Trebuchet MS'
+	background-color $light-gray
+	border 4px solid $vivid-blue
+
+	&__description
+		font-size 16px
+		color $dark-gray
+
+	&__name,
+	&__additive
+		font-weight 700
+		color $black
+
+	&__name
+		font-size 48px
+
+	&__additive
+		font-size 24px
+
+	&__portions,
+	&__present
+		font-size 14px
+		line-height 16px
+		color $dark-gray
+
+	&__weight
+		width 81px
+		height 81px
+		background-color $vivid-blue
+		border-radius 50%
+
+		&__number
+			font-size 42px
+			color #white
+
+			&:before
+				font-size 21px
+				line-height 22px
+				content 'кг'
+
+	&__buy-wrapper
+		padding-top 16px
+
+	&__buy-text
+		font-size 13px
+		font-weight 400
+		line-height 16px
+		text-shadow 0 1px 0 $black
+		color $white
+
+	&__buy-link
+		font-weight 700
+		color $vivid-blue

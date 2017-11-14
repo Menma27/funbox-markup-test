@@ -1,0 +1,15 @@
+mixin product()
+	+b.product&attributes(attributes)
+		+e.description=data.description
+		+e.name=data.name
+		+e.additive=data.addictive
+		+e.portions=data.portions
+		+e.present=data.present
+
+		//- +e('img')
+		+e.weight
+			+e('span').weight-number
+
+		+e.buy-wrapper
+			+e.buy-text
+			+e.buy-link

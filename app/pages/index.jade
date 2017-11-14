@@ -1,6 +1,12 @@
 extends /blocks/layout-default/layout-default
 
+include /blocks/container/container
+include /blocks/heading/heading 
+
 block head
-	- var pageTitle = 'CSSSR Project Template';
+	- var pageTitle = 'FunBox тестовое задание';
 
 block content
+	+container
+		+heading
+			| Ты сегодня покормил кота?
