@@ -1,5 +1,9 @@
-mixin products()
+include ../product/product
+
+mixin products(data)
+	- data = data || {};
+
 	+b.products&attributes(attributes)
 		each product in data.products
-			+e.item
-				//- +product(data)
+			+e.product-wrapper
+				+product(product)

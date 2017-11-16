@@ -2,11 +2,14 @@ extends /blocks/layout-default/layout-default
 
 include /blocks/container/container
 include /blocks/heading/heading 
+include /blocks/products/products
 
 block head
-	- var pageTitle = 'FunBox тестовое задание';
+	- var pageTitle = 'FunBox, тестовое задание';
 
 block content
 	+container
 		+heading
 			| Ты сегодня покормил кота?
+			
+		+products(getData('/products'))
