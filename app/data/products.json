@@ -1,11 +1,13 @@
 {
     "products": [{
         "id": "first",
+        "disabled": true,
         "description": "Сказочное заморское яство",
         "approve": "Котэ не одобряет?",
         "name": "Нямушка",
-        "addictive": "с фуа-гра",
-        "portions": "10 порций",
+        "additive": "с фуа-гра",
+        "quantity": "10",
+        "portions": "порций",
         "present": "мышь в подарок",
         "image": "/assets/images/product/cat.png",
         "title": "Кот",
@@ -16,11 +18,13 @@
         "ended": "Печалька, с фуа-гра закончился."
     }, {
         "id": "second",
+        "disabled": true,
         "description": "Сказочное заморское яство",
         "approve": "Котэ не одобряет?",
         "name": "Нямушка",
-        "addictive": "с рыбой",
-        "portions": "40 порций",
+        "additive": "с рыбой",
+        "quantity": "40",
+        "portions": "порций",
         "present": "2 мыши в подарок",
         "image": "/assets/images/product/cat.png",
         "title": "Кот",
@@ -31,11 +35,13 @@
         "ended": "Печалька, с рыбой закончился."
     }, {
         "id": "third",
+        "disabled": true,
         "description": "Сказочное заморское яство",
         "approve": "Котэ не одобряет?",
         "name": "Нямушка",
-        "addictive": "с курой",
-        "portions": "100 порций",
+        "additive": "с курой",
+        "quantity": "100",
+        "portions": "порций",
         "present": "5 мышей в подарок,\n заказчик доволен",
         "image": "/assets/images/product/cat.png",
         "title": "Кот",

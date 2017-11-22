@@ -6,6 +6,7 @@ mixin product(data)
 			type='checkbox'
 			name=data.id
 			id=data.id
+			disabled=data.disabled
 		)
 
 		+e('label').label(
@@ -16,8 +17,10 @@ mixin product(data)
 					+e('div').description=data.description
 					+e('div').no-approve=data.approve
 					+e('div').name=data.name
-					+e('div').additive=data.addictive
-					+e('div').portions=data.portions
+					+e('div').additive=data.additive
+					+e('div').portions
+						+e('span').quantity=data.quantity
+						+e('span')=data.portions
 					+e('div').present!=data.present.replace(/\n/g, '<br>')
 
 					+e('img').image(
@@ -31,6 +34,6 @@ mixin product(data)
 
 			+e('div').action-call
 				+e('span').buy-text=data.text
-				+e('span').buy-link=data.link
+				+e('label')(for=data.id).buy-link=data.link
 				+e('span').consist=data.consist
 				+e('span').no-more=data.ended
