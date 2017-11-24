@@ -1,5 +1,13 @@
 .heading
+	margin-bottom 27px
 	font-family 'Exo-Thin'
 	font-size 36px
 	text-shadow 0 1px 0 $black
 	color $white
+
+	+below($responsivePhone)
+		margin-top 27px
+		font-size 28px
+
+	+below($responsivePhoneSmall)
+		font-size 22px

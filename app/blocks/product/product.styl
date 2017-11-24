@@ -1,49 +1,74 @@
 .product
 	position relative
 	font-family 'Trebuchet'
-	
+		
 	&__input 
-		display none
+		position absolute
+		opacity 0
+		z-index -1
+		top 0
+		left 0
+		size 100%
 
-	&__input:checked + &__label &__container
-		border-color $vivid-pink
+	&__container:hover &
+	&__input:focus + &__label &__container:hover &
+		border-color $bright-blue
 
 		&:before
-			border-top-color $vivid-pink
+			border-top-color $bright-blue
 
-	&__input:checked + &__label &__weight
-		background-color $vivid-pink
+		&__weight
+			background-color $bright-blue
 
-	&__input:checked + &__label &__buy-text
-	&__input:checked + &__label	&__buy-link
-		display none
+	&__container:hover + &__action-call &__buy-link
+	&__input:focus + &__label &__container:hover + &__action-call &__buy-link
+		color $bright-blue
+		border-bottom-color $bright-blue
 
-	&__input:checked + &__label	&
-		&__action-call
+	&__input:checked:focus + &__label &
+	&__input:checked + &__label &
+	&__input:checked:focus + &__label &__container:hover &	
+		&__container
+			border-color $vivid-pink
+			
+			&:before
+				border-top-color $vivid-pink
+
+		&__weight
+			background-color $vivid-pink
+
+		&__buy-text
+		&__buy-link
+		&__no-approve
+			display none
+
 		&__consist
+		&__description
 			display block
 
-	&__input:checked:hover + &__label &__container
+	&__input:checked + &__label &__container:hover &
 		border-color $bright-pink
 
 		&:before
 			border-top-color $bright-pink
 
-	&__input:checked:hover + &__label &__weight
-		background-color $bright-pink
+		&__weight
+			background-color $bright-pink
 
-	&__input:checked:hover + &__label &__description
-		display none
+		&__description
+			display none
 
-	&__input:checked:hover + &__label &__no-approve
-		display block
+		&__no-approve
+			display block
 
 	&__input[disabled] + &__label &
 
 		&__container
+			cursor default
 			border-color $gray
 
 			&:before
+				z-index 1
 				border-top-color $gray
 
 			&:after
@@ -51,10 +76,9 @@
 				top 0
 				left 0
 				opacity .5
-				width 100%
-				height 100%
-				background-color $light-gray
+				size 100%
 				content ''
+				background-color $light-gray
 		
 		&__weight
 			background-color $gray
@@ -64,9 +88,9 @@
 		&__additive
 		&__portions
 		&__present
-			opacity .5
 			color $gray
-
+			opacity .5
+			
 		&__buy-text
 		&__buy-link
 			display none
@@ -74,15 +98,18 @@
 		&__no-more
 			display block
 
+	&__input:focus + &__label &__container
 	&__container
 		clip-path polygon( // загнутый угол
-			14% 0,
+			13% 0,
 			100% 0,
 			100% 100%,
 			50% 100%,
 			0% 100%,
-			0% 10%)
+			0% 9%)
 		position relative
+		padding-top 19px
+		margin-bottom 12px
 		overflow hidden
 		width 320px
 		height 480px
@@ -92,32 +119,46 @@
 		border-top-right-radius 14px
 		border-bottom-right-radius 14px
 		border-bottom-left-radius 14px
-		transition border .3s // TODO check it
+		transition border .3s
 		&:before // граница для загнутого угла
 			position absolute
-			top -3px
-			left -3px
+			top -6px
+			left -4px
 			content ''
-			border-top 52px solid $vivid-blue
+			border-top 50px solid $vivid-blue
 			border-right 49px solid transparent
 			transition border .3s
+		
+		+below($responsivePhone)
+			margin-x auto
 
-	&__container:hover
-		border-color $bright-blue
-
-		&:before
-			border-top-color $bright-blue
-
-	&__container:hover &__weight
-		background-color $bright-blue
-
-	&__container:hover + &__action-call &__buy-link
-		color $bright-blue
-		border-bottom-color $bright-blue
+		+below($responsivePhoneSmall)
+			width 290px
 
 	&__info
-		padding-top 19px
-		padding-left 43px
+		padding-left 44px
+
+	&__description-wrapper
+		position relative
+		width 100%
+		height 16px
+		margin-bottom 11px
+
+	&__description
+	&__no-approve
+	&__name
+	&__additive
+	&__portions
+	&__present
+		overflow hidden
+		text-overflow ellipsis
+		white-space nowrap
+
+	&__description
+	&__no-approve
+		position absolute
+		top 0
+		left 0
 
 	&__description
 		font-size 16px
@@ -135,11 +176,12 @@
 		color $black
 
 	&__name
-		padding-top 11px
+		margin-left -2px
+		margin-bottom 3px
 		font-size 48px
 
 	&__additive
-		padding-top 3px
+		margin-bottom 17px
 		font-size 24px
 
 	&__portions
@@ -148,32 +190,28 @@
 		line-height 16px
 		color $dark-gray
 
-	&__portions
-		padding-top 17px
-
 	&__quantity
 		font-weight 700
 
 	&__image
 		position absolute
-		top 204px
-		right -26px
+		top 205px
+		right -27px
 
+	&__input:focus + &__label &__weight
 	&__weight
 		position absolute
-		top	379px
-		right 13px
-		padding-top 5px
+		top	380px
+		right 12px
+		padding-top 12px
 		display flex
 		justify-content center
-		width 81px
-		height 81px
+		size 80px
 		background-color $vivid-blue
 		border-radius 50%
 		transition background-color .3s
 
 	&__number
-		margin-top 8px
 		font-size 42px
 		color $white
 
@@ -186,7 +224,8 @@
 			content 'кг'
 
 	&__action-call
-		margin-top 16px
+		max-width 320px
+		min-height 18px
 		text-align center
 
 	&__buy-text
@@ -200,6 +239,15 @@
 		text-shadow 0 1px 0 $black
 		color $white
 
+		+below($responsivePhoneSmall)
+			font-size 12px
+			line-height 14px
+
+	&__input:focus + &__label &
+		&__buy-text
+		&__buy-link
+			display inline-block
+
 	&__buy-text
 	&__buy-link
 		display inline-block
@@ -209,12 +257,12 @@
 		text-decoration none
 		cursor pointer
 		color $vivid-blue
-		border-bottom 1px dotted $vivid-blue
+		border-bottom 1px dashed $vivid-blue
 		transition color .3s, border
 
-	&__consist
-	&__no-more
-		display none
+		&:hover
+			color $bright-blue
+			border-bottom-color $bright-blue
 
 	&__no-more
 		color $light-yellow

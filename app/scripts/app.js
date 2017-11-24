@@ -4,3 +4,7 @@ import $ from 'jquery';
 $(() => {
 	svg4everybody();
 });
+
+import Product from '../blocks/product/product';
+
+$(() => new Product().render());

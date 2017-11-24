@@ -1,31 +1,23 @@
 .products
-	margin-top 27px
 	display flex
 	justify-content space-between
 	flex-wrap wrap
 	width 100%
 	max-width 1120px
 
-	&__product-wrapper
-
-		&:first-child
-			order 1
-
-		&:nth-child(2)
-			order 2
+	+below($responsiveTablet)
+		justify-content space-around
 		
-		&:last-child
-			order 3
-
-	+below($responsiveTabletSmall)
-		&__product-wrapper 
+		&__product-wrapper
+			margin-bottom 24px 
 			&:first-child
 				width 100%
 				display flex
 				justify-content center
-	
-	+below($responsivePhoneSmall)
+			
+	+below($responsivePhone)
 		&__product-wrapper
+				margin-bottom 16px
 				width 100%
 				display flex
 				justify-content center

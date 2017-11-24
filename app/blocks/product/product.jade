@@ -1,21 +1,23 @@
 mixin product(data)
 	- data = data || {};
 
-	+b.product&attributes(attributes)
-		+e('input').input(
+	+b.product.js-product&attributes(attributes)
+		+e('input').input.js-product-input(
 			type='checkbox'
 			name=data.id
 			id=data.id
+			checked=data.checked
 			disabled=data.disabled
 		)
 
-		+e('label').label(
+		+e('label').label.js-product-label(
 			for=data.id
 		)
 			+e('div').container
 				+e('div').info
-					+e('div').description=data.description
-					+e('div').no-approve=data.approve
+					+e('div').description-wrapper
+						+e('div').description=data.description
+						+e('div').no-approve=data.approve
 					+e('div').name=data.name
 					+e('div').additive=data.additive
 					+e('div').portions
@@ -34,6 +36,6 @@ mixin product(data)
 
 			+e('div').action-call
 				+e('span').buy-text=data.text
-				+e('label')(for=data.id).buy-link=data.link
+				+e('label').buy-link(for=data.id)=data.link
 				+e('span').consist=data.consist
 				+e('span').no-more=data.ended
