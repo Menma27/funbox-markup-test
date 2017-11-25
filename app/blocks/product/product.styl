@@ -1,14 +1,14 @@
 .product
 	position relative
-	font-family 'Trebuchet'
+	font-family trebuchet
 		
 	&__input 
 		position absolute
-		opacity 0
 		z-index -1
 		top 0
 		left 0
 		size 100%
+		opacity 0
 
 	&__container:hover &
 	&__input:focus + &__label &__container:hover &
@@ -32,7 +32,11 @@
 			border-color $vivid-pink
 			
 			&:before
-				border-top-color $vivid-pink
+				border-left-color $vivid-pink
+
+			&:after
+				border-top 4px solid $vivid-pink
+				border-right 4px solid $vivid-pink
 
 		&__weight
 			background-color $vivid-pink
@@ -46,11 +50,25 @@
 		&__description
 			display block
 
+	&__input:checked:focus + &__label &__container:hover
+		border-color $vivid-pink
+			
+		&:before
+			border-left-color $vivid-pink
+
+		&:after
+			border-top 4px solid $bright-pink
+			border-right 4px solid $bright-pink
+
 	&__input:checked + &__label &__container:hover &
 		border-color $bright-pink
 
 		&:before
-			border-top-color $bright-pink
+			border-left-color $bright-pink
+
+		&:after
+			border-top 4px solid $bright-pink
+			border-right 4px solid $bright-pink
 
 		&__weight
 			background-color $bright-pink
@@ -68,17 +86,21 @@
 			border-color $gray
 
 			&:before
-				z-index 1
-				border-top-color $gray
+				border-left-color $gray
 
 			&:after
-				position absolute
-				top 0
-				left 0
-				opacity .5
-				size 100%
-				content ''
-				background-color $light-gray
+				border-top 4px solid $gray
+				border-right 4px solid $gray
+
+		&__disabled
+			position absolute
+			top 0
+			left 0
+			display block
+			size 100%
+			content ''
+			background-color $light-gray
+			opacity .5
 		
 		&__weight
 			background-color $gray
@@ -100,59 +122,74 @@
 
 	&__input:focus + &__label &__container
 	&__container
-		clip-path polygon( // загнутый угол
-			13% 0,
-			100% 0,
-			100% 100%,
-			50% 100%,
-			0% 100%,
-			0% 9%)
 		position relative
-		padding-top 19px
-		margin-bottom 12px
-		overflow hidden
+		margin-bottom 14px
 		width 320px
-		height 480px
+		height 435px
 		cursor pointer
 		background-color $light-gray
 		border 4px solid $vivid-blue
-		border-top-right-radius 14px
+		border-top 0
 		border-bottom-right-radius 14px
 		border-bottom-left-radius 14px
 		transition border .3s
-		&:before // граница для загнутого угла
+		&:before
 			position absolute
-			top -6px
-			left -4px
+			z-index 1
+			top -39px
+			left 10px
+			display block
+			width 36px
+			height 62px
 			content ''
-			border-top 50px solid $vivid-blue
-			border-right 49px solid transparent
+			transform rotate(45deg)
+			border-left 4px solid $vivid-blue
+			border-radius 0 0 0 5px
 			transition border .3s
-		
+
+		&:after
+			position absolute
+			z-index 0
+			top -44px
+			right -4px
+			display block
+			clip rect(auto, auto, auto, 38px)
+			width 100%
+			height 45px
+			content ''
+			background-color $light-gray
+			border-top 4px solid $vivid-blue
+			border-right 4px solid $vivid-blue
+			border-radius 0 10px 0 0
+			transition border .3s
+
 		+below($responsivePhone)
 			margin-x auto
 
 		+below($responsivePhoneSmall)
 			width 290px
 
+	&__hidden-triangle
+		position absolute
+		z-index -1
+		top -17px
+		left -1px
+		display block
+		size 0
+		border-left 39px solid transparent
+		border-bottom 39px solid $light-gray
+
 	&__info
+		position relative
+		z-index 1
+		top -22px
 		padding-left 44px
 
 	&__description-wrapper
 		position relative
+		margin-bottom 11px
 		width 100%
 		height 16px
-		margin-bottom 11px
-
-	&__description
-	&__no-approve
-	&__name
-	&__additive
-	&__portions
-	&__present
-		overflow hidden
-		text-overflow ellipsis
-		white-space nowrap
 
 	&__description
 	&__no-approve
@@ -160,15 +197,15 @@
 		top 0
 		left 0
 
-	&__description
-		font-size 16px
-		color $dark-gray
-	
 	&__no-approve
 		display none
 		font-size 16px
 		font-weight 400
 		color $bright-pink
+
+	&__description
+		font-size 16px
+		color $dark-gray
 
 	&__name,
 	&__additive
@@ -176,8 +213,8 @@
 		color $black
 
 	&__name
-		margin-left -2px
 		margin-bottom 3px
+		margin-left -2px
 		font-size 48px
 
 	&__additive
@@ -193,16 +230,25 @@
 	&__quantity
 		font-weight 700
 
+	&__image-wrapper
+		position absolute
+		left 0
+		bottom 0
+		overflow hidden
+		width 304px
+		height 272px
+		border-bottom-left-radius 14px
+
 	&__image
 		position absolute
-		top 205px
-		right -27px
+		top 5px
+		left -27px
 
 	&__input:focus + &__label &__weight
 	&__weight
 		position absolute
-		top	380px
 		right 12px
+		bottom 12px
 		padding-top 12px
 		display flex
 		justify-content center
@@ -210,6 +256,11 @@
 		background-color $vivid-blue
 		border-radius 50%
 		transition background-color .3s
+
+	&__disabled
+		display none
+		border-bottom-right-radius 14px
+		border-bottom-left-radius 14px
 
 	&__number
 		font-size 42px
@@ -266,3 +317,9 @@
 
 	&__no-more
 		color $light-yellow
+
+	// Чтобы не писать импортанты, трудноустранямый баг с фокусом при двойном клике при checked
+	&_checked-hover > &__input:checked + &__label &__container > &__info &__no-approve
+		display none
+	&_checked-hover > &__input:checked + &__label &__container > &__info &__description
+		display block

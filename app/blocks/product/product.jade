@@ -15,6 +15,7 @@ mixin product(data)
 		)
 			+e('div').container
 				+e('div').info
+					+e('div').hidden-triangle
 					+e('div').description-wrapper
 						+e('div').description=data.description
 						+e('div').no-approve=data.approve
@@ -24,15 +25,17 @@ mixin product(data)
 						+e('span').quantity=data.quantity
 						+e('span')=data.portions
 					+e('div').present!=data.present.replace(/\n/g, '<br>')
-
+				+e('div').image-wrapper
 					+e('img').image(
 						src=data.image
 						title=data.title
 						alt=data.title
 					)
 
-					+e('div').weight
-						+e('span').number=data.weight
+				+e('div').weight
+					+e('span').number=data.weight
+				
+				+e('div').disabled
 
 			+e('div').action-call
 				+e('span').buy-text=data.text

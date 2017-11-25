@@ -7,6 +7,9 @@ export default class {
 			dom: {
 				input: '.js-product-input',
 				label: '.js-product-label'
+			},
+			classes: {
+				checkedHover: 'product_checked-hover'
 			}
 		};
 
@@ -16,7 +19,7 @@ export default class {
 	}
 
 	getDom() {
-		const { input, label } = this.options.dom;
+		const {input, label} = this.options.dom;
 		this.$input = this.$el.find(input);
 		this.$label = this.$el.find(label);
 
@@ -27,11 +30,20 @@ export default class {
 		const $target = $(e.currentTarget);
 		const $parent = $target.closest(this.$el);
 		const $input = $parent.find(this.$input);
+		$parent.removeClass(this.options.classes.checkedHover);
 		$input.blur();
+	}
+
+	onClick = e => {
+		const $target = $(e.currentTarget);
+		const $parent = $target.closest(this.$el);
+		const $input = $parent.find(this.$input);
+		$parent.toggleClass(this.options.classes.checkedHover, !$input.prop('checked'));
 	}
 
 	init() {
 		this.$label.on('mouseleave', this.onChange);
+		this.$label.on('click', this.onClick);
 	}
 
 	render() {
