@@ -10,13 +10,19 @@
 		size 100%
 		opacity 0
 
+	&__container:hover
+	&__input:focus + &__label &__container:hover 
+		border-color $bright-blue
+		
+		&:before
+			border-left-color $bright-blue
+
+		&:after
+			border-top-color $bright-blue
+			border-right-color $bright-blue
+
 	&__container:hover &
 	&__input:focus + &__label &__container:hover &
-		border-color $bright-blue
-
-		&:before
-			border-top-color $bright-blue
-
 		&__weight
 			background-color $bright-blue
 
@@ -35,8 +41,8 @@
 				border-left-color $vivid-pink
 
 			&:after
-				border-top 4px solid $vivid-pink
-				border-right 4px solid $vivid-pink
+				border-top-color $vivid-pink
+				border-right-color $vivid-pink
 
 		&__weight
 			background-color $vivid-pink
@@ -57,19 +63,20 @@
 			border-left-color $vivid-pink
 
 		&:after
-			border-top 4px solid $bright-pink
-			border-right 4px solid $bright-pink
+			border-top-color $bright-pink
+			border-right-color $bright-pink
 
-	&__input:checked + &__label &__container:hover &
+	&__input:checked + &__label &__container:hover
 		border-color $bright-pink
 
 		&:before
 			border-left-color $bright-pink
 
 		&:after
-			border-top 4px solid $bright-pink
-			border-right 4px solid $bright-pink
+			border-top-color $bright-pink
+			border-right-color $bright-pink
 
+	&__input:checked + &__label &__container:hover &
 		&__weight
 			background-color $bright-pink
 
