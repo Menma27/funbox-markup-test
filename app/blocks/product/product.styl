@@ -20,16 +20,37 @@
 		&:after
 			border-top-color $bright-blue
 			border-right-color $bright-blue
+			
+		+below($responsiveTablet)
+			border-color $vivid-blue
+
+			&:before
+				border-left-color $vivid-blue
+
+			&:after
+				border-top-color $vivid-blue
+				border-right-color $vivid-blue
 
 	&__container:hover &
 	&__input:focus + &__label &__container:hover &
 		&__weight
 			background-color $bright-blue
+		
+			+below($responsiveTablet)
+				background-color $vivid-blue
 
 	&__container:hover + &__action-call &__buy-link
 	&__input:focus + &__label &__container:hover + &__action-call &__buy-link
 		color $bright-blue
-		border-bottom-color $bright-blue
+
+		&:after
+			border-bottom-color $bright-blue
+
+		+below($responsiveTablet)
+			color $vivid-blue
+
+			&:after
+				border-bottom-color $vivid-blue
 
 	&__input:checked:focus + &__label &
 	&__input:checked + &__label &
@@ -63,8 +84,8 @@
 			border-left-color $vivid-pink
 
 		&:after
-			border-top-color $bright-pink
-			border-right-color $bright-pink
+			border-top-color $vivid-pink
+			border-right-color $vivid-pink
 
 	&__input:checked + &__label &__container:hover
 		border-color $bright-pink
@@ -142,7 +163,7 @@
 		transition border .3s
 		&:before
 			position absolute
-			z-index 1
+			z-index 3
 			top -39px
 			left 10px
 			display block
@@ -156,7 +177,7 @@
 
 		&:after
 			position absolute
-			z-index 0
+			z-index 2
 			top -44px
 			right -4px
 			display block
@@ -178,17 +199,17 @@
 
 	&__hidden-triangle
 		position absolute
-		z-index -1
-		top -17px
+		z-index 1
+		top -42px
 		left -1px
 		display block
 		size 0
-		border-left 39px solid transparent
-		border-bottom 39px solid $light-gray
+		border-left 42px solid transparent
+		border-bottom 42px solid $light-gray
 
 	&__info
 		position relative
-		z-index 1
+		z-index 3
 		top -22px
 		padding-left 44px
 
@@ -311,16 +332,27 @@
 		display inline-block
 
 	&__buy-link
+		position relative
 		font-weight 700
 		text-decoration none
 		cursor pointer
 		color $vivid-blue
-		border-bottom 1px dashed $vivid-blue
 		transition color .3s, border
+
+		&:after
+			position absolute
+			top 14px
+			left 0
+			width 86%
+			content ''
+			border-bottom 1px dashed $vivid-blue
+			transition border .3s
 
 		&:hover
 			color $bright-blue
-			border-bottom-color $bright-blue
+
+			&:after
+				border-bottom-color $bright-blue
 
 	&__no-more
 		color $light-yellow
