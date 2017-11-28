@@ -8,6 +8,7 @@
 		top 0
 		left 0
 		size 100%
+		visibility hidden
 		opacity 0
 
 	&__container:hover
@@ -70,12 +71,18 @@
 
 		&__buy-text
 		&__buy-link
-		&__no-approve
 			display none
 
+		&__no-approve
+			visibility hidden
+			opacity 0
+			
 		&__consist
-		&__description
 			display block
+
+		&__description
+			visibility visible
+			opacity 1
 
 	&__input:checked:focus + &__label &__container:hover
 		border-color $vivid-pink
@@ -102,13 +109,16 @@
 			background-color $bright-pink
 
 		&__description
-			display none
+			visibility hidden
+			opacity 0
 
 		&__no-approve
-			display block
+			visibility visible
+			opacity 1
 
 			+below($responsiveTablet)
-				display none
+				visibility hidden
+				opacity 0
 
 	&__input[disabled] + &__label &
 
@@ -164,7 +174,10 @@
 		border-top 0
 		border-bottom-right-radius 14px
 		border-bottom-left-radius 14px
-		transition border .3s
+		transition border-color .3s
+		transform translateZ(0)
+		backface-visibility hidden
+		will-change border-color
 		&:before
 			position absolute
 			z-index 3
@@ -174,10 +187,12 @@
 			width 36px
 			height 62px
 			content ''
-			transform rotate(45deg)
 			border-left 4px solid $vivid-blue
 			border-radius 0 0 0 5px
-			transition border .3s
+			transform rotate(45deg) translateZ(0)
+			transition border-color .3s
+			backface-visibility hidden
+			will-change border-color
 
 		&:after
 			position absolute
@@ -193,7 +208,10 @@
 			border-top 4px solid $vivid-blue
 			border-right 4px solid $vivid-blue
 			border-radius 0 14px 0 0
-			transition border .3s
+			transform translateZ(0)
+			transition border-color .3s
+			backface-visibility hidden
+			will-change border-color
 
 		+below($responsivePhone)
 			margin-x auto
@@ -221,6 +239,7 @@
 		position relative
 		z-index 3
 		top -22px
+		padding-right 44px
 		padding-left 44px
 
 	&__description-wrapper
@@ -229,20 +248,26 @@
 		width 100%
 		height 16px
 
-	&__description
 	&__no-approve
 		position absolute
 		top 0
 		left 0
+		font-size 16px
+		transform translateZ(0)
+		transition opacity .3s
+		backface-visibility hidden
+		will-change opacity
 
 	&__no-approve
-		display none
+		visibility hidden
 		font-size 16px
 		color $bright-pink
+		opacity 0
 
 	&__description
-		font-size 16px
+		visibility visible
 		color $dark-gray
+		opacity 1
 
 	&__name,
 	&__additive
@@ -275,6 +300,7 @@
 		overflow hidden
 		width 304px
 		height 272px
+		border-bottom-right-radius 14px
 		border-bottom-left-radius 14px
 
 	&__image
@@ -294,8 +320,11 @@
 		flex-direction column
 		size 80px
 		background-color $vivid-blue
-		border-radius 50%
+		border-radius 50% // Линтер конфликтует с border-radius
 		transition background-color .3s // @stylint ignore
+		transform translateZ(0)
+		backface-visibility hidden // @stylint ignore
+		will-change background-color // @stylint ignore
 
 	&__disabled
 		display none
@@ -324,7 +353,7 @@
 		display none
 		font-size 13px
 		line-height 16px
-		text-shadow 0 1px 0 1px $black
+		text-shadow 0 1px 0 $black
 		color $white
 
 		+below($responsivePhoneSmall)
@@ -346,7 +375,10 @@
 		text-decoration none
 		cursor pointer
 		color $vivid-blue
-		transition color .3s, border
+		transform translateZ(0)
+		transition color .3s
+		backface-visibility hidden
+		will-change color
 
 		&:after
 			position absolute
@@ -355,7 +387,10 @@
 			width 86%
 			content ''
 			border-bottom 1px dashed $vivid-blue
-			transition border .3s
+			transform translateZ(0)
+			transition border-color .3s
+			backface-visibility hidden
+			will-change border-color
 
 		&:hover
 			color $bright-blue
@@ -368,6 +403,9 @@
 
 	// Чтобы не писать импортанты, трудноустранямый баг с фокусом при двойном клике при checked
 	&_checked-hover > &__input:checked + &__label &__container > &__info &__no-approve
-		display none
+		visibility hidden
+		opacity 0
+
 	&_checked-hover > &__input:checked + &__label &__container > &__info &__description
-		display block
+		visibility visible
+		opacity 1
