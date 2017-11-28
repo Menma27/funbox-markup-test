@@ -107,6 +107,9 @@
 		&__no-approve
 			display block
 
+			+below($responsiveTablet)
+				display none
+
 	&__input[disabled] + &__label &
 
 		&__container
@@ -138,6 +141,7 @@
 		&__additive
 		&__portions
 		&__present
+		&__satisfied
 			color $gray
 			opacity .5
 			
@@ -188,7 +192,7 @@
 			background-color $light-gray
 			border-top 4px solid $vivid-blue
 			border-right 4px solid $vivid-blue
-			border-radius 0 10px 0 0
+			border-radius 0 14px 0 0
 			transition border .3s
 
 		+below($responsivePhone)
@@ -206,6 +210,12 @@
 		size 0
 		border-left 42px solid transparent
 		border-bottom 42px solid $light-gray
+
+		+below($responsivePhoneSmall)
+			top -44px
+			left -2px
+			border-left-width 42px
+			border-bottom-width 45px
 
 	&__info
 		position relative
@@ -228,7 +238,6 @@
 	&__no-approve
 		display none
 		font-size 16px
-		font-weight 400
 		color $bright-pink
 
 	&__description
@@ -251,6 +260,7 @@
 
 	&__portions
 	&__present
+	&__satisfied
 		font-size 14px
 		line-height 16px
 		color $dark-gray
@@ -277,13 +287,15 @@
 		position absolute
 		right 12px
 		bottom 12px
-		padding-top 12px
+		padding-top 6px
 		display flex
 		justify-content center
+		align-items center
+		flex-direction column
 		size 80px
 		background-color $vivid-blue
 		border-radius 50%
-		transition background-color .3s
+		transition background-color .3s // @stylint ignore
 
 	&__disabled
 		display none
@@ -294,13 +306,11 @@
 		font-size 42px
 		color $white
 
-		&:after
-			position absolute
-			top 65%
-			right 38%
-			font-size 21px
-			line-height 22px
-			content 'кг'
+	&__measure
+		margin-top -3px
+		font-size 21px
+		line-height 22px
+		color $white
 
 	&__action-call
 		max-width 320px
@@ -313,9 +323,8 @@
 	&__no-more
 		display none
 		font-size 13px
-		font-weight 400
 		line-height 16px
-		text-shadow 0 1px 0 $black
+		text-shadow 0 1px 0 1px $black
 		color $white
 
 		+below($responsivePhoneSmall)

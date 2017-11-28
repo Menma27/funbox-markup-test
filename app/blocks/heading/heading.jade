@@ -1,3 +1,4 @@
-mixin heading()
-	+b('h2').heading&attributes(attributes)
-		block
+mixin heading(data)
+	- data = data || {};
+
+	+b('h1').heading&attributes(attributes)=data.heading

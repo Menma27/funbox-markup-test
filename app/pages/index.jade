@@ -9,7 +9,6 @@ block head
 
 block content
 	+container
-		+heading
-			| Ты сегодня покормил кота?
+		+heading(getData('/heading'))
 			
 		+products(getData('/products'))

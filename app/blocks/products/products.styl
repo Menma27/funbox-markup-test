@@ -7,16 +7,18 @@
 
 	+below($responsiveTablet)
 		justify-content space-around
-		
-		&__product-wrapper
-			margin-bottom 60px 
+
+	&__product-wrapper
+		+below($responsiveTablet)
 			&:first-child
+				margin-bottom 60px
 				display flex
 				justify-content center
 				width 100%
 			
-	+below($responsivePhone)
-		&__product-wrapper
-				display flex
-				justify-content center
-				width 100%
+		+below($responsivePhone)
+			display flex
+			justify-content center
+			width 100%
+			&:not(:last-child)
+				margin-bottom 60px

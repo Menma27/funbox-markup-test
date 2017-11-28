@@ -23,7 +23,12 @@ mixin product(data)
 					+e('div').portions
 						+e('span').quantity=data.quantity
 						+e('span')=data.portions
-					+e('div').present!=data.present.replace(/\n/g, '<br>')
+					+e('div').present
+						+e('span').quantity=data.number
+						+e('span')=data.present
+					if data.satisfied
+						+e('div').satisfied=data.satisfied
+					
 				+e('div').image-wrapper
 					+e('img').image(
 						src=data.image
@@ -33,6 +38,7 @@ mixin product(data)
 
 				+e('div').weight
 					+e('span').number=data.weight
+					+e('span').measure=data.measure
 					
 				+e('div').hidden-triangle
 				+e('div').disabled
