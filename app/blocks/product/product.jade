@@ -21,10 +21,10 @@ mixin product(data)
 					+e('h2').name=data.name
 					+e('h3').additive=data.additive
 					+e('p').portions
-						+e('span').quantity=data.quantity
+						+e('span').quantity.js-product-quantity-portions=data.quantity
 						+e('span')=data.portions
 					+e('p').present
-						+e('span').quantity=data.number
+						+e('span').quantity.js-product-quantity-present=data.number
 						+e('span')=data.present
 						
 					if data.satisfied
@@ -38,7 +38,7 @@ mixin product(data)
 					)
 
 				+e('div').weight
-					+e('span').number=data.weight
+					+e('span').number.js-product-weight=data.weight
 					+e('span').measure=data.measure
 					
 				+e('div').hidden-triangle
